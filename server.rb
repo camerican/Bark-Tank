@@ -52,7 +52,8 @@ end
 
 
 get '/auth/slack/callback' do
-  p request
+  p "ENV: #{ENV}"
+  p "RACK_ENV/OMNIAUTH.params: #{ENV["RACK_ENV"]["omniauth.params"]}"
   ENV["RACK_ENV"]["omniauth.params"]
   #@user = User.find_by(slack_name: ENV['omniauth.auth']['user']['name'])
 
