@@ -38,7 +38,7 @@ configure :production do
 end
 
 use OmniAuth::Builder do
-  provider :slack, ENV['BARK_TANK_ID'], ENV['BARK_TANK_SECRET'], scope: 'identity.basic'
+  provider :slack, ENV['BARK_TANK_ID'], ENV['BARK_TANK_SECRET'], scope: 'client', team: 'nycda'
 end
 
 CarrierWave.configure do |config|
@@ -52,7 +52,7 @@ end
 
 
 get '/auth/slack/callback' do
-  p response
+  p request
   request.env["omniauth.params"]
   #@user = User.find_by(slack_name: ENV['omniauth.auth']['user']['name'])
 
