@@ -52,10 +52,10 @@ end
 
 
 get '/auth/slack/callback' do
-  p ENV['omniauth.auth']
-  @user = User.find_by(slack_name: ENV['omniauth.auth']['user']['name'])
+  p response
+  #@user = User.find_by(slack_name: ENV['omniauth.auth']['user']['name'])
 
-  ENV['omniauth.auth']
+ # ENV['omniauth.auth']
   # # env['omniauth.auth']
   #  p "detected provider #{env['omniauth.auth']['provider']}"
   #   oa_account = DB[:oa_account].where(id: env['omniauth.auth']['uid']).where(type: env['omniauth.auth']['provider'])
