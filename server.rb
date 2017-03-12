@@ -64,9 +64,9 @@ get '/auth/slack/callback' do
   p "----------"
   p "token: #{request.env['omniauth.auth']['credentials']['token']}"
   p "----------"
-  p "image: #{request.env['omniauth.auth']['profile']['image_original']}"
-  p "----------"
   p "nickname: #{request.env['omniauth.auth']['info']['nickname']}"
+  p "----------"
+  p "image: #{request.env['omniauth.auth']['info']['profile']['image_original']}"
   #ENV["RACK_ENV"]["omniauth.params"]
   #@user = User.find_by(slack_name: ENV['omniauth.auth']['user']['name'])
 
