@@ -7,7 +7,7 @@ require 'carrierwave/orm/activerecord'
 require 'active_support/all'
 require 'action_view'
 require 'pg'
-require 'sqlite3'
+
 require './models'
 
 ## Enable ActionView TagHelper
@@ -21,6 +21,7 @@ configure do
 end
 
 configure :development, :test do
+  require 'sqlite3'
   set :database, {adapter: 'sqlite3', database: 'db/barktank.sqlite3'}
 end
 
