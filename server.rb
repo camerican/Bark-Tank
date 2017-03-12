@@ -6,6 +6,7 @@ require 'carrierwave'
 require 'carrierwave/orm/activerecord'
 require 'active_support/all'
 require 'action_view'
+require 'pp'
 require './models'
 
 ## Enable ActionView TagHelper
@@ -52,7 +53,7 @@ end
 
 
 get '/auth/slack/callback' do
-  p "request: #{request}"
+  pp request
   p "omniauth.params: #{request["omniauth.params"]}"
   #ENV["RACK_ENV"]["omniauth.params"]
   #@user = User.find_by(slack_name: ENV['omniauth.auth']['user']['name'])
