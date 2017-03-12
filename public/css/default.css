@@ -1,0 +1,55 @@
+body.home h1 {
+	position: absolute;
+	top: 5em;
+	left: -2em;
+	width: 70%;
+	height: 2em;
+	line-height: 2em;
+	text-align: right;
+	font-size: 5em;
+	margin: 0;
+	padding: 0;
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+	background-color: rgba(100,36,72,0.95);
+	color: #fff;
+	font-family: Righteous;
+/*	transition: left 1s linear;*/
+	animation:banner_entrance 2s 1 cubic-bezier(0,1.2,0.8,1);
+	z-index: 1;
+}
+@keyframes banner_entrance {
+	0% {
+		left: -15em;
+	}
+	100% {
+		left: -2em;
+	}
+}
+@keyframes dog_grow {
+	0% {
+		opacity: 0.5;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+body.home {
+	text-align: center;
+}
+body.home h1::after {
+	content: '';
+	position:absolute;
+	right:-3em;
+	top: -3em;
+	width: 1em;
+	height: 3em;
+	border-bottom: 2em solid rgba(100,36,72,0.95);
+	border-right: 2em solid transparent;
+}
+body.home .dogs {
+	position: relative;
+	animation: dog_grow 0.75s 1 ease-in;
+}
+
+

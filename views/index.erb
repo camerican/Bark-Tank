@@ -1,0 +1,12 @@
+<%= content_tag :h1, 'Bark Tank' %>
+
+<%= image_tag '/img/dogs.png', class: :dogs %>
+
+<% @projects.each do |project| %>
+	<%= content_tag :div, class: :project do 
+			concat( link_to("/#{project.short}") do 
+				content_tag :h2, project.name
+			end)
+			concat content_tag :p, project.description
+	  end %>
+<% end %>

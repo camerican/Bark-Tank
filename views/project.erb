@@ -1,0 +1,10 @@
+<%= content_tag :h2, @project.name %>
+
+<%# concat to clean up helpers https://thepugautomatic.com/2013/06/helpers/ %>
+
+<% @project.members.each do |member| %>
+	<%= content_tag :div, class: :team_member do
+		concat content_tag :h3, member.name
+		concat image_tag member.photo, width: 100
+	 end %>
+<% end %>
