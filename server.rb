@@ -2,7 +2,6 @@
 require 'sinatra'
 require 'sinatra/activerecord'
 require 'omniauth-slack'
-require 'sqlite3'
 require 'carrierwave'
 require 'carrierwave/orm/activerecord'
 require 'active_support/all'
@@ -20,10 +19,12 @@ configure do
 end
 
 configure :development, :test do
+  require 'sqlite3'
   set :database, {adapter: 'sqlite3', database: 'db/barktank.sqlite3'}
 end
 
 configure :production do
+  require 'pg'
  db = URI.parse(ENV['DATABASE_URL'] || 'postgres:///localhost/mydb')
 
  ActiveRecord::Base.establish_connection(
