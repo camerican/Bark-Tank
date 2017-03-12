@@ -1,4 +1,4 @@
-class BuildSchema < ActiveRecord::Migration[5.0]
+class BuildSchema < ActiveRecord::Migration
   def change
     ### User Table
     create_table :users do |t|
