@@ -70,11 +70,11 @@ get '/auth/slack/callback' do
   #ENV["RACK_ENV"]["omniauth.params"]
   #@user = User.find_by(slack_name: ENV['omniauth.auth']['user']['name'])
 
-  # redirect to("/")
+  redirect to("/")
 end
 
 get '/auth/failure' do
-   erb "<h1>Authentication Failed:</h1><h3>message:<h3> <pre>#{params}</pre>"
+   erb "<h1>Authentication Failed:</h1><h3>message:<h3> <pre>#{params}</pre>", locals: {klass: :home} 
 end
 
 get '/logout' do
@@ -83,7 +83,7 @@ get '/logout' do
 end
 
 get '/auth/slack/deauthorized' do
-  erb "Slack has deauthorized this app."
+  erb "Slack has deauthorized this app.", locals: {klass: :home}
 end
 
 # # projects and handles
