@@ -1,5 +1,7 @@
 source 'http://rubygems.org'
 
+ruby '2.2.2'
+
 gem 'rack', '1.6.5'
 gem 'sinatra'
 gem 'omniauth-slack'
