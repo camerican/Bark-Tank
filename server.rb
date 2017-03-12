@@ -38,7 +38,7 @@ configure :production do
 end
 
 use OmniAuth::Builder do
-  provider :slack, ENV['BARK_TANK_ID'], ENV['BARK_TANK_SECRET'], scope: 'indentity.basic'
+  provider :slack, ENV['BARK_TANK_ID'], ENV['BARK_TANK_SECRET']
 end
 
 CarrierWave.configure do |config|
