@@ -1,3 +1,6 @@
+body {
+	background: linear-gradient( 45deg, #fff, #cff );
+}
 body.home h1 {
 	position: absolute;
 	top: 5em;
@@ -51,5 +54,38 @@ body.home .dogs {
 	position: relative;
 	animation: dog_grow 0.75s 1 ease-in;
 }
-
-
+#login {
+	font-size: 2em;
+	width: 4.5em;
+	height: 4.5em;
+  background: -webkit-linear-gradient(45deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 50%, rgba(100,36,72,0.95) 50%, rgba(100,36,72,0.95) 100%);
+	top:0;
+	right:0em;
+	position:fixed;
+	transition: all 0.75s ease-in;
+}
+#login:hover {
+	width: 5.5em;
+	height: 5.5em;
+}
+#login .text {
+	font-family: Righteous;
+	color: #fff;
+	transform: rotateZ(45deg);
+	-webkit-transform: rotateZ(45deg);
+	position: absolute;
+	width: 100%;
+	cursor:pointer;
+	text-align: right;
+}
+#login .text a {
+	text-decoration: none;
+	color: #fff;
+	transition: color 1s linear;
+}
+#login:hover .text a {
+	color: #ccc;
+}
+#login.loggedin .text a {
+	font-size: 0.75em;
+}

@@ -15,15 +15,18 @@ include ActionView::Helpers
 include ActionView::Context
 # ref: http://stackoverflow.com/questions/4633493/nested-content-tag-throws-undefined-method-output-buffer-in-simple-helper
 
+### activate sessions for login purposes
 configure do
   enable :sessions
 end
 
+### sqlite3 database for development and test
 configure :development, :test do
   require 'sqlite3'
   set :database, {adapter: 'sqlite3', database: 'db/barktank.sqlite3'}
 end
 
+### PostGRES database configuration for production
 configure :production do
   require 'pg'
   db = URI.parse(ENV['DATABASE_URL'] || 'postgres:///localhost/mydb')
@@ -38,12 +41,20 @@ configure :production do
   )
 end
 
+### Prepare Slack Authentication Request
 use OmniAuth::Builder do
   provider :slack, ENV['BARK_TANK_ID'], ENV['BARK_TANK_SECRET'], scope: 'client', team: 'nycda'
 end
 
+### Prepare Carrier Wave for Image processing (captured from Slack)
 CarrierWave.configure do |config|
   config.root = File.dirname(__FILE__) + "/public"
+end
+
+### Load current to manage logins
+before do
+  # @current_user = User.find_by(slack_uid: session[:slack_uid])
+  @current_user = User.find(1)
 end
 
 get '/' do
@@ -58,7 +69,17 @@ get '/auth/slack/callback' do
 
   # p "OMNIAUTH.AUTH--------------"
   # pp request.env['omniauth.auth'].inspect
+  @current_user = User.find_by(slack_name: request.env['omniauth.auth']['info']['user'])
 
+  # if we weren't able to find you, error out
+  unless @current_user
+    halt 500
+  end
+
+  @current_user.update(
+    slack_id: @current_user[:slack_id] || request.env['omniauth.auth']['uid'],
+    
+  )
 
   p "UID: #{request.env['omniauth.auth']['uid']}"
   p "----------"

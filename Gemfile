@@ -18,4 +18,5 @@ end
 gem 'actionpack', '~>4'
 gem 'activesupport', '~>4.2.7', require: 'active_support/all'
 gem 'actionview'#, '~>4.2.7'
+gem 'puma'
 # gem 'actionview', '~> 4.1.0'
